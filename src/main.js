@@ -1,4 +1,4 @@
-import { loadSprite, makeSprite } from "./utils.js";
+import { loadSprite, makeLayer, makeSprite, makeInfiniteScroll } from "./utils.js";
 
 const container = document.querySelector(".container");
 
@@ -28,10 +28,12 @@ async function main() {
     ]);
 
     const layer1GameObj = makeSprite(c, layer1, {x: 0, y: -100}, 4);
-    const layer2GameObj = makeSprite(c, layer2, {x: 0, y: -100}, 4);
-    const layer3GameObj = makeSprite(c, layer3, {x: 0, y: -100}, 4);
-    const layer4GameObj = makeSprite(c, layer4, {x: 0, y: -100}, 4); 
+    const layer2GameObj = makeLayer(c, layer2, {x: 0, y: -100}, 4);
+    const layer3GameObj = makeLayer(c, layer3, {x: 0, y: -100}, 4);
+    const layer4GameObj = makeLayer(c, layer4, {x: 0, y: -100}, 4); 
     
+
+
     let dt;
     let oldTimeStamp = 0;
     let fps;
@@ -44,6 +46,12 @@ async function main() {
         fps = Math.round(1 / dt);
 
         c.clearRect(0, 0, canvas.width, canvas.height);
+
+        layer1GameObj.draw();
+
+        makeInfiniteScroll(dt, layer2GameObj, -100);
+        makeInfiniteScroll(dt, layer3GameObj, -700);
+        makeInfiniteScroll(dt, layer4GameObj, -2500);
 
         if (debugMode) {
             c.font = "128px Arial";
