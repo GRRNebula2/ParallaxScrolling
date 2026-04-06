@@ -1,3 +1,5 @@
+import { loadSprite } from "./utils.js";
+
 const container = document.querySelector(".container");
 
 new ResizeObserver(() => {
