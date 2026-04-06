@@ -13,3 +13,21 @@ body {
     position: relative;
     margin: 0;
 }
+
+#gameCanvas {
+    /*width: 1920;
+    height: 1080; */
+    width: var(--width);
+    height: var(--height);
+    image-rendering: pixelated;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--width) * 1px);
+    height: calc(var(--width) * 1px);
+    transform: translate(-50%, -50%) scale(var(--scale, 0));
+    box-sizing: border-box;
+}
